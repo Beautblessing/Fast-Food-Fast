@@ -2,13 +2,14 @@
   "name": "fast-food-fast",
   "version": "1.0.0",
   "description": "A food delivery service app",
-  "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "test":"nyc --reporter=html --reporter=text-lcov mocha ./tests --recursive --exit",
-    "test-dev": "mocha ./tests --recursive --exit",
+    "start": "npm run build && node dist/app.js",
+    "build": "babel server -d dist",
+    "start-dev": "npm run build && nodemon dist/app.js",
+    "test":"nyc --reporter=html --reporter=text-lcov _mocha ./tests --recursive --require babel-register --exit --timeout 5000",
+    "test-dev": " nyc _mocha ./tests --recursive --exit --timeout 5000",
     "coverage": "nyc --reporter=lcov --reporter=text-lcov | coveralls",
-    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm run test-dev"
+    "coveralls":"nyc --reporter=lcov --reporter=text-lcov npm test"
   },
   "repository": {
     "type": "git",

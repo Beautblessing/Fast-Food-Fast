@@ -1,15 +1,14 @@
-const express = require('express');
+import express from 'express';
+
+import bodyParser from 'body-parser';
+import morgan from 'morgan';
 
 const app = express();
 
-const bodyParser = require('body-parser');
-const morgan = require('morgan');
-
-app.use(express.static('public'));
 
 //  Initializ and use routes
-const menusRoutes = require('./server/routes/menus');
-const orderRoutes = require('./server/routes/orders');
+// const menusRoutes = require('./routes/menus');
+const orderRoutes = require('./routes/orders');
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -18,7 +17,7 @@ app.use(bodyParser.json());
 // Routes which should handle requests
 //  use routes
 
-app.use('/api/v1/menus', menusRoutes);
+// app.use('/api/v1/menus', menusRoutes);
 app.use('/api/v1/orders', orderRoutes);
 
 // app.use((req,res,next) => {
@@ -43,4 +42,10 @@ app.use((error, req, res, next) => {
     next(error);
 });
 
-module.exports = app;
+const port = process.env.PORT || 9000;
+
+app.listen(port);
+
+console.log(`Now listening on: http://localhost:${port}`);
+
+export default app;

@@ -1,12 +1,5 @@
-// var should = require('should');
-// var assert = require('asset');
-// import chai from 'chai';
-// import chaiHttp from 'chai-http';
-const request = require('supertest');
-// import app from '../../server/index';
-const app = require('../app');
-
-// chai.use(chaiHttp);
+import request from 'supertest';
+import app from '../server/app';
 
 // Testing get all orders
 
