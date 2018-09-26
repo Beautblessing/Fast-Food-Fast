@@ -4,7 +4,7 @@
   "description": "A food delivery service app",
   "scripts": {
     "start": "npm run build && node dist/app.js",
-    "build": "babel server -d dist",
+    "build": "node ./node_modules/babel-cli/bin/babel.js server -d dist",
     "start:dev": "npm run build && nodemon dist/app.js",
     "test": "nyc  mocha --exit   ./tests --require babel-register --timeout 5000",
     "test-dev": "nyc  mocha --exit   ./tests --require babel-register --timeout 5000",
