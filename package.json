@@ -6,10 +6,10 @@
     "start": "npm run build && node dist/app.js",
     "build": "babel server -d dist",
     "start-dev": "npm run build && nodemon dist/app.js",
-    "test":"nyc --reporter=html --reporter=text-lcov _mocha ./tests --recursive --require babel-register --exit --timeout 5000",
+    "test": "nyc --reporter=html --reporter=text-lcov _mocha ./tests --recursive --require babel-register --exit --timeout 5000",
     "test-dev": " nyc _mocha ./tests --recursive --exit --timeout 5000",
     "coverage": "nyc --reporter=lcov --reporter=text-lcov | coveralls",
-    "coveralls":"nyc --reporter=lcov --reporter=text-lcov npm test"
+    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test"
   },
   "repository": {
     "type": "git",
@@ -38,14 +38,12 @@
     "body-parser": "^1.18.3",
     "eslint": "^5.6.0",
     "express": "^4.16.3",
-    "express-api-versioning": "^2.0.0",
     "flowtype": "^2.0.0",
     "morgan": "^1.9.1",
     "standard": "^12.0.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-watch": "^2.0.7",
     "chai": "^4.1.2",
     "chai-http": "^4.2.0",
     "codeclimate-test-reporter": "^0.5.0",
