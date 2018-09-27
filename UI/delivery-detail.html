@@ -18,7 +18,7 @@
 
 			<nav>
 				<ul>
-					<li><a href="place-orders.html">Orders</a></li><!-- 
+					<li><a href="place-orders.html">Orders</a></li><!--
 					<li><a href="services.html"><img src="img/plus.png"></a></li> -->
 				</ul>
 			</nav>
@@ -29,38 +29,54 @@
 
 	<section id="delivery-form">
 		<div class="container">
-			<!-- <div>
-				<h3>DELIVERY INFORMATION</h3>
-			</div> -->
 
 			<aside class="sidebar">
 				<div class="dark">
-					<form class="quote" method="post" action="order-confirmation.html">
+					<form class="quote">
 
 						<h2>DELIVERY DETAIL</h2>
+
+						<div>
+
+							<div id="orderDetail">
+								<div>
+									<label>ORDER DETAIL</label><br>
+									<input id="name"type="text">
+								</div>
+								<div>
+										<label>AMOUNT</label><br>
+										<input  id="price" type="text">
+								</div>
+								<div>
+										<label>QUANTITY</label><br>
+										<input  id="quantity" type="text">
+								</div>
+
+							  </div>
+						</div>
 						<div>
 							<label>Name</label><br>
-							<input type="text" placeholder="Name">
+							<input id="uName" type="text" placeholder="Name">
 						</div>
 
 						<div>
 							<label>Email</label><br>
-							<input type="email" placeholder="Email Address">
+							<input  id="uEmail" type="email" placeholder="Email Address">
 						</div>
 
 						<div>
 							<label>Phone Number</label><br>
-							<input type="Number" placeholder="Phone Number">
+							<input id="uPhone" type="Number" placeholder="Phone Number">
 						</div>
 
 						<div>
 							<label>Address</label><br>
-							<input type="text" placeholder="Address">
+							<input id="uAddress" type="text" placeholder="Address">
 						</div>
 
 						<div>
 							<label>City</label><br>
-							<select> 
+							<select>
 								<option value="abuja">Abuja</option>
 
 							</select>
@@ -73,12 +89,8 @@
 
 						<div>
 							<label>Delivery Date</label><br>
-							<input type="date" name="dateofdelivery" id="dateofdelivery">
+							<input  id="dDate"type="date" name="dateofdelivery">
 						</div><br>
-
-
-
-
 
 						<div class="container1">
 
@@ -86,31 +98,25 @@
 
 							<ul>
 								<li>
-									<input type="radio" id="f-option" name="selector">
+									<input type="radio" id="f-option" name="selector" value="Cash/POS On Delivery">
 									<label for="f-option">Cash/POS On Delivery</label>
-
 									<div class="check"></div>
 								</li>
 
 								<li>
-									<input type="radio" id="s-option" name="selector">
+									<input type="radio" id="s-option" name="selector" value="Bank Transfer">
 									<label for="s-option">Bank Transfer</label>
 									<div class="bank-detail">
 										<label id="account-no">0011547689 GTBank</label>
 										<label id ="account-name">Account Name: Fast Food Fast</label>
 									</div>
-
 									<div class="check"><div class="inside"></div></div>
 								</li>
 
-								
+
 							</ul>
 						</div>
-
-
-
-
-						<button class="button_1" type="submit">Order Now</button>
+						<button class="button_1" id="placeOrder" type="submit"  onclick="placeOrder()">Order Now</button>
 					</form>
 				</div>
 			</aside>
@@ -120,12 +126,69 @@
 
 	<section id="payment_method">
 		<div class="container">
-			
+
 		</div>
 	</section>
+
+	<section id="boxes">
+		<div class="container">
+			<div class="box">
+				<!-- <img class="itemImg" src="./img/chicken_pizza.jpg"> -->
+				<h3 id="itemName"></h3>
+				<p id="itemAmount"></p>
+			</div>
+			</div>
+		</section>
 
 	<footer>
 		<p>Fast-Food-Fast, Copyright &copy; 2018</p>
 	</footer>
+	<script>
+
+
+var queryString = decodeURIComponent(window.location.search);
+queryString = queryString.substring(1);
+var queries = queryString.split("?");
+
+var currentPar1=queries[0].split('=');
+document.getElementById("name").value = currentPar1[1];
+  var currentPar2=queries[1].split('=');
+  document.getElementById("price").value = currentPar2[1];
+
+  var currentPar3=queries[2].split('=');
+  document.getElementById("quantity").value = currentPar3[1];
+
+
+	function placeOrder(){
+		var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					alert(this.responseText);
+					alert(foodItems);
+
+				}
+			};
+			// id = unique_id();
+			var foodItems = document.getElementById('name').value;
+			var totalAmount = document.getElementById('price').value;
+			var totalqty = document.getElementById('quantity').value;
+			var customerName = document.getElementById('uName').value;
+			var email = document.getElementById('uEmail').value;
+			var phone = document.getElementById('uPhone').value;
+			var address = document.getElementById('uAddress').value;
+			var dDate = document.getElementById('dDate').value;
+			var paymentType = document.querySelector('input[name="selector"]:checked').value;
+
+
+			var obj = {"foodItemName":foodItems,"itemAmount":totalAmount,"itemQuantity":totalqty,"nameOfCustomer":customerName,"email":email, "phone":phone,"address":address,"date":dDate,"paymentType":paymentType};
+			var myJSON = JSON.stringify(obj);
+
+			xhttp.open("POST", "http://localhost:9000/api/orders", true);
+			xhttp.setRequestHeader("Content-type", "application/json");
+			xhttp.send(myJSON);
+
+	}
+
+	</script>
 </body>
 </html>

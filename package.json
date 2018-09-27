@@ -3,10 +3,8 @@
   "version": "1.0.0",
   "description": "A food delivery service app",
   "scripts": {
-    "start": "npm run build && node dist/app.js",
-    "build": "npm run clean && babel ./server/app.js -d ./dist/app.js",
-    "clean": "rimraf dist",
-    "start:dev": "npm run build && nodemon dist/app.js",
+    "start": "babel-node server/app.js --exec",
+    "start:dev":  "nodemon server/app.js",
     "test": "nyc  mocha --exit   ./tests --require babel-register --timeout 5000",
     "test-dev": "nyc  mocha --exit   ./tests --require babel-register --timeout 5000",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
