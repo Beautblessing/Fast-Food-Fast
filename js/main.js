@@ -16,5 +16,20 @@ for (let i = 0; i < dropdown.length; i++) {
 function redirect(url) {
     location.href = url;
 }
+//function for collecting food item, price and quantity
+let Name = '';
+let Price = '';
+let Quantity = '';
 
+function sendItem(itemName, itemPrice, itemQty) {
+    Name = itemName;
+    Price = itemPrice * itemQty;
+    Quantity = itemQty;
+    const queryString = `?foodItemName=${Name}?price=${Price}?quantity=${Quantity}`;
+    // alert(queryString);
+    location.href = `delivery-detail.html${queryString}`;
+}
+
+// on button click for sending order
+document.getElementsByClassName('send-order').addEventListener('click', sendItem);
             
