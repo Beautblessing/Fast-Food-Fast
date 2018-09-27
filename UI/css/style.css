@@ -42,6 +42,11 @@ ul, li, h3{
 	margin-top: 10px;
 	margin-bottom: 20px;
 	font-weight: bold;
+	cursor: pointer;
+}
+
+.button_1:active{
+	transform: translateY(4px);
 }
 
 .dark{

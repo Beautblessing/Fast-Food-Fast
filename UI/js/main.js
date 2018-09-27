@@ -13,3 +13,6 @@
 //     });
 //   }
 console.log('welcome');
+function redirect(url) {
+    location.href = url;
+}
