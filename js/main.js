@@ -1,4 +1,4 @@
-/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content */
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown contents */
 const dropdown = document.getElementsByClassName("dropdown-btn");
 
 for (let i = 0; i < dropdown.length; i++) {
