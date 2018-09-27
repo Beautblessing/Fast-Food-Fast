@@ -946,6 +946,10 @@ header #logo{
 	header nav li{
 			font-size: 12px;
 	}
+	#boxes .box p{
+	
+	font-size: 12px;
+}
 	#showcase{
 	background-repeat:no-repeat center center fixed;
   -webkit-background-size: cover;
