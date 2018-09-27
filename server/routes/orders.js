@@ -1,5 +1,4 @@
-// import express from 'express';
-const express = require('express');
+import express from 'express';
 
 const router = express.Router();
 
@@ -171,7 +170,7 @@ router.put('/:id', (req, res) => {
 
     order.splice(orderIndex, 1, updatedOrder);
 
-    return res.status(201).send({
+    return res.status(200).send({
         success: 'true',
         message: 'item updated successfully',
         updatedOrder,
