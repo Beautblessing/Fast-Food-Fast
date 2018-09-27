@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
@@ -9,11 +10,12 @@
 	<title>Fast Food Fast | Welcome</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
+
 <body>
 	<header>
 		<div class="container">
 			<div id="logo">
-			<img src="img/logo_fff.png">
+				<img src="img/logo_fff.png">
 			</div>
 
 			<nav>
@@ -36,7 +38,7 @@
 			<div class="dark">
 				<h3>Sign in</h3>
 				<h5>New to Fast-Food-Fast? <span class="highlight"> <a href="signup.html"> Sign up </a></span></h5>
-				<form class="quote" method="post" action="place-orders.html">
+				<form class="quote" method="" action="">
 
 					<div>
 						<label>Email</label><br>
@@ -47,14 +49,17 @@
 						<label>Password</label><br>
 						<input type="Password" placeholder="Password">
 					</div>
-					<button class="button_1" type="submit">Sign In</button>
 				</form>
-				</div>
+				<button class="button_1" onclick="redirect('place-orders.html')">Sign In</button>
+			</div>
 		</div>
 	</section>
 
 	<footer>
 		<p>Fast-Food-Fast, Copyright &copy; 2018</p>
 	</footer>
+
+	<script src="js/main.js"></script>
 </body>
+
 </html>
