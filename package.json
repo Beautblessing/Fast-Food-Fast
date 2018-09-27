@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "A food delivery service app",
   "scripts": {
-    "start": "babel-node server/app.js --exec",
-    "start:dev":  "nodemon server/app.js",
+    "start": "npm run build && node dist/app.js",
+    "build": "npm run clean && node ./node_modules/babel-cli/bin/babel.js ./server/app.js -d ./dist/app.js",
+    "clean": "rimraf dist",
+    "start:dev": "npm run build && nodemon dist/app.js",
     "test": "nyc  mocha --exit   ./tests --require babel-register --timeout 5000",
     "test-dev": "nyc  mocha --exit   ./tests --require babel-register --timeout 5000",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
@@ -30,12 +32,7 @@
     "url": "https://github.com/Beautblessing/Fast-Food-Fast/issues"
   },
   "homepage": "https://github.com/Beautblessing/Fast-Food-Fast#readme",
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "eslint": "^5.6.0",
-    "express": "^4.16.3",
-    "morgan": "^1.9.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
@@ -50,6 +47,10 @@
     "nyc": "^13.0.1",
     "request": "^2.88.0",
     "rimraf": "^2.6.2",
-    "supertest": "^3.3.0"
+    "supertest": "^3.3.0",
+    "body-parser": "^1.18.3",
+    "eslint": "^5.6.0",
+    "express": "^4.16.3",
+    "morgan": "^1.9.1"
   }
 }

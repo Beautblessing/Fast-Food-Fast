@@ -1,10 +1,6 @@
-const express = require('express');
+import express from 'express';
 
 const router = express.Router();
-
-// import menus from ('../models/menu');
-//  const menus = require('../menu/menu');
-// import menu from './menu/menu';
 
 // dummy array to hold menus
 const menu = [
@@ -119,7 +115,7 @@ router.put('/:id', (req, res) => {
 
     menu.splice(itemIndex, 1, updatedItem);
 
-    return res.status(201).send({
+    return res.status(200).send({
         success: 'true',
         message: 'item updated successfully',
         updatedItem,
@@ -153,6 +149,5 @@ router.delete('/:id', (req, res) => {
         message: 'menus deleted successfuly',
     });
 });
-
 
 module.exports = router;

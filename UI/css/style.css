@@ -1,7 +1,7 @@
 body{
 	font: 15px/1.5 "Myriad Pro","Helvetica Neue",Helvetica,Arial,Sans-Serif;;
-	padding: 0;
-	margin: 0;
+	padding: 0px;
+	margin: 0 auto;
 	background-color: #f4f4f4;
 }
 
@@ -612,15 +612,18 @@ ul#menu h3{
 	
 }
 
-section#delivery-form{
+section#delivery-form .wrapper aside.sidebar .dark  .quote{
 	margin: auto;
-	width: 60%;
 	margin-top: 10px;
 	text-align: left;
 	margin-bottom: 20px;
 
 }
-
+section#delivery-form  .dark .quote{
+	margin: o;
+	padding: 0;
+	margin: auto;
+}
 
 section#delivery-form h3{
 	text-align: center;
@@ -629,12 +632,15 @@ section#delivery-form h3{
 
 section#delivery-form .quote input{
 	width: 90%;
-	padding: 5px;
+	margin: auto;
+	margin: 0;
+	padding: 0;
 	border: 1px solid #c4c4c4;
 	background-color: #fff;
 	padding: 3px 5px;
+	padding-left: 15px;
 	box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);
-	width: 500px;
+	
 }
 
 
@@ -703,12 +709,10 @@ section#delivery-form .quote input{
 
 }
 
-
 .container1 ul li:hover label{
 	/*color: #FFFFFF;*/
 	color: #e8491d;
 }
-
 
 .container1 ul li label{
 	/*color: #FFFFFF;*/
@@ -920,12 +924,9 @@ footer{
 
 }
 
-
-
 #footer{
 	clear:both;
 }
-
 
 /*media Queries*/
 
