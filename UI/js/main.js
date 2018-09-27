@@ -1,8 +1,7 @@
 /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown contents */
 // const dropdown = document.getElementsByClassName('dropdown-btn');
-//   i;
 
-//   for (let i = 0; i < dropdown.length; +=1) {
+//   for (let i = 0; i < dropdown.length; += 1) {
 //     dropdown[i].addEventListener('click', function() {
 //       this.classList.toggle('active');
 //       let dropdownContent = this.nextElementSibling;
@@ -13,3 +12,4 @@
 //       }
 //     });
 //   }
+console.log('welcome');
