@@ -4,7 +4,8 @@
   "description": "A food delivery service app",
   "scripts": {
     "start": "npm run build && node dist/app.js",
-    "build": "node ./node_modules/babel-cli/bin/babel.js ./server/app.js -d ./dist/app.js",
+    "build": "npm run clean && node ./node_modules/babel-cli/bin/babel.js ./server/app.js -d ./dist/app.js",
+    "clean": "rimraf dist",
     "start:dev": "npm run build && nodemon dist/app.js",
     "test": "nyc  mocha --exit   ./tests --require babel-register --timeout 5000",
     "test-dev": "nyc  mocha --exit   ./tests --require babel-register --timeout 5000",
@@ -39,6 +40,7 @@
     "express": "^4.16.3",
     "flowtype": "^2.0.0",
     "morgan": "^1.9.1",
+    "rimraf": "^2.6.2",
     "standard": "^12.0.1"
   },
   "devDependencies": {
