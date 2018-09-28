@@ -7,7 +7,7 @@ const app = express();
 
 
 //  Initializ and use routes
-const menusRoutes = require('./routes/menus');
+// const menusRoutes = require('./routes/menus');
 const orderRoutes = require('./routes/orders');
 
 app.use(morgan('dev'));
@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 // Routes which should handle requests
 //  use routes
 
-app.use('/api/v1/menus', menusRoutes);
+// app.use('/api/v1/menus', menusRoutes);
 app.use('/api/v1/orders', orderRoutes);
 
 // app.use((req,res,next) => {
