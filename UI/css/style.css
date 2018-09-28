@@ -411,7 +411,6 @@ font-weight: normal;
 	border: none;
 	font-weight: bold;
 
-
 }
 #boxes .box span{
 	margin: 0;
@@ -479,8 +478,6 @@ ul#services li{
 }
 
 /*Menu*/
-
-
 
 ul#menu li{
 	list-style: none;
@@ -643,7 +640,6 @@ section#delivery-form .quote input{
 	
 }
 
-
 #delivery-form h2, h3{
 	text-align: center;
 	padding: 0;
@@ -777,7 +773,6 @@ section#delivery-form .quote input{
 
    }
 
-
 #sidebar-left, #main, #sidebar-right{
 	min-height: 600px
 
@@ -822,8 +817,6 @@ background-color: white;
 	color: #818181;
 }
 
-
-
 /*main admin*/
 #main{
 	float:left;
@@ -853,8 +846,8 @@ margin-bottom: 30px;
 
 /* Main content */
 .main {
-	margin-left: 200px; /* Same as the width of the sidenav */
-	font-size: 20px; /* Increased text to enable scrolling */
+	margin-left: 200px;
+	font-size: 20px; 
 	padding: 0px 10px;
 }
 
@@ -863,13 +856,6 @@ margin-bottom: 30px;
 	/*background-color: green;*/
 	background-color: #e8491d;
 	color: white;
-}
-
-/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
-.dropdown-container {
-	display: none;
-	background-color: #262626;
-	padding-left: 8px;
 }
 
 /* Optional: Style the caret down icon */
@@ -930,10 +916,9 @@ footer{
 
 /*media Queries*/
 
-@media(max-width: 768px){
+@media only screen and (max-width: 768px){
 	header #logo, header nav, header nav li,
 	#boxes .box,
-	article#main-col,
 	aside#sidebar{
 		float: none;
 		text-align: center;
@@ -981,14 +966,67 @@ font-weight: normal;
 font-size: 8px;
 }
 
-#boxes .box p{
-	
+#boxes .box p{	
+font-size: 12px;
+}
+.row{
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+}
+#delivery-form .button_1{
+	width: 100%;
+}
+#sidebar-left{
+	width:30%;
+}
+#main{
+	width:70%;
+}
+/* #main.main-bg{
+	width: 80%;
+} */
+#sidebar-left button{
+	font-size: 15px;
+}
+#sidebar-left a{
 	font-size: 12px;
+}
+#main h2{
+	font-size: 20px;
+	margin: 20px;
+}
+tb1{
+	margin-top: 0;
+}
+td{
+	font-size: 12px;
+}
+.row{
+	overflow-x: scroll;
+	overflow-y: hidden;
+	white-space: nowrap;
+}
+.confirm{
+	float: right;
+    display: inline-flex
+}
+
+.confirm .button_3{
+	width: 70%;
 }
 
 }
 /* media queries */
-@media screen and (max-height: 450px) {
+@media screen and (max-height: 500px) {
 	#sidebar-left{padding-top: 15px;}
 	#sidebar-left a {font-size: 18px;}
+
+}
+@media only screen and (max-width: 500px) {
+.row{
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+}
 }
