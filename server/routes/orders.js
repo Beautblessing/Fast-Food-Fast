@@ -146,7 +146,7 @@ router.put('/:id', (req, res) => {
         });
     }
 
-    if (req.body.orderStatus === '') {
+    if (!req.body.orderStatus) {
         return res.status(400).send({
             success: 'false',
             message: 'Order Status is required',

@@ -117,7 +117,7 @@ describe('PUT /orders/:id', () => {
         paymentType: 'Cash/POS',
     };
 
-    it('respond with 200 ok. item updated successfully', (done) => {
+    it('respond with 200 updated. item updated successfully', (done) => {
         request(app)
             .put('/api/v1/orders/1')
             .send(orderStatus)
