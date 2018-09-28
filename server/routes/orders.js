@@ -18,8 +18,18 @@ const order = [
         paymentType: 'Cash/POS',
     },
 ];
-// get all orders
+
+// welcome
 router.get('/', (req, res) => {
+    res.status(200).send({
+        success: 'true',
+        message: 'Welcome',
+        order,
+    });
+});
+
+// get all orders
+router.get('/orders', (req, res) => {
     res.status(200).send({
         success: 'true',
         message: 'order retrieved successfully',
@@ -29,19 +39,18 @@ router.get('/', (req, res) => {
 
 
 // get a specific order from orders
-router.get('/:id', (req, res) => {
+router.get('/orders/:id', (req, res) => {
     const id = parseInt(req.params.id, 10);
-    order.map((itemToFind) => {
-        if (itemToFind.id === id) {
-            return res.status(200).send({
-                success: 'true',
-                message: 'order retrieved successfully',
-                itemToFind,
-            });
-        }
-        return false;
+    const found = order.find((element) =>{
+        return element.id === id;
     });
-
+    if (found) {
+        return res.status(200).json({
+            success: true,
+            message: 'order retrieved successfully',
+            found,
+        });
+    }
     return res.status(404).send({
         success: 'false',
         message: 'such order does not exist',
@@ -49,7 +58,7 @@ router.get('/:id', (req, res) => {
 });
 // post a new order
 
-router.post('/', (req, res) => {
+router.post('/orders', (req, res) => {
     if (!req.body.foodItemName) {
         return res.status(400).send({
             success: 'false',
@@ -70,11 +79,11 @@ router.post('/', (req, res) => {
             success: 'false',
             message: 'name of customer is required',
         });
-    // } if (!req.body.email) {
-    //     return res.status(400).send({
-    //         success: 'false',
-    //         message: 'price of item is required',
-    //     });
+        // } if (!req.body.email) {
+        //     return res.status(400).send({
+        //         success: 'false',
+        //         message: 'price of item is required',
+        //     });
     } if (!req.body.phone) {
         return res.status(400).send({
             success: 'false',
@@ -127,7 +136,7 @@ router.post('/', (req, res) => {
 });
 
 // update an order status
-router.put('/:id', (req, res) => {
+router.put('/orders/:id', (req, res) => {
     const id = parseInt(req.params.id, 10);
     let idFound;
     let orderIndex;

@@ -26,10 +26,58 @@ describe('POST /orders', () => {
         paymentType: 'Cash/POS',
     };
 
-    const orderNotpassed = {
+    const itemNotpassed = {
         itemAmount: 1500,
         itemQuantity: 1,
         nameOfCustomer: 'Bunmi Thomas',
+        email: 'bubu@yahoo.com',
+        phone: '09087654367',
+        address: 'ushafa',
+        orderStatus: 'completed',
+        date: '2018-09-15',
+        paymentType: 'Cash/POS',
+    };
+
+    const customerNotpassed = {
+        foodItemName: 'Beef burger',
+        itemAmount: 1500,
+        itemQuantity: 1,
+        email: 'bubu@yahoo.com',
+        phone: '09087654367',
+        address: 'ushafa',
+        orderStatus: 'completed',
+        date: '2018-09-15',
+        paymentType: 'Cash/POS',
+    };
+
+    const addressNotpassed = {
+        itemAmount: 1500,
+        itemQuantity: 1,
+        nameOfCustomer: 'Bunmi Thomas',
+        email: 'bubu@yahoo.com',
+        phone: '09087654367',
+        address: 'ushafa',
+        orderStatus: 'completed',
+        date: '2018-09-15',
+        paymentType: 'Cash/POS',
+    };
+
+    const paymentMethodNotpassed = {
+        foodItemName: 'Beef burger',
+        itemAmount: 1500,
+        itemQuantity: 1,
+        email: 'bubu@yahoo.com',
+        phone: '09087654367',
+        address: 'ushafa',
+        orderStatus: 'completed',
+        date: '2018-09-15',
+        paymentType: 'Cash/POS',
+    };
+
+    const dateNotpassed = {
+        foodItemName: 'Beef burger',
+        itemAmount: 1500,
+        itemQuantity: 1,
         email: 'bubu@yahoo.com',
         phone: '09087654367',
         address: 'ushafa',
@@ -50,11 +98,77 @@ describe('POST /orders', () => {
             });
     });
 
-    it('respond order cannot be placed. Please check your order', (done) => {
+    it('respond order cannot be placed. Please select a menu item', (done) => {
         request(app)
             .post('/api/v1/orders')
-            .send(orderNotpassed)
+            .send(itemNotpassed)
             .expect(400)
+            .end((err) => {
+                if (err) return done(err);
+                done();
+                return true;
+            });
+    });
+
+    it('respond order cannot be placed. Please enter your name', (done) => {
+        request(app)
+            .post('/api/v1/orders')
+            .send(customerNotpassed)
+            .expect(400)
+            .end((err) => {
+                if (err) return done(err);
+                done();
+                return true;
+            });
+    });
+
+    it('respond order cannot be placed. Please enter your address', (done) => {
+        request(app)
+            .post('/api/v1/orders')
+            .send(addressNotpassed)
+            .expect(400)
+            .end((err) => {
+                if (err) return done(err);
+                done();
+                return true;
+            });
+    });
+
+    it('respond order cannot be placed. Please select a payment method', (done) => {
+        request(app)
+            .post('/api/v1/orders')
+            .send(paymentMethodNotpassed)
+            .expect(400)
+            .end((err) => {
+                if (err) return done(err);
+                done();
+                return true;
+            });
+    });
+
+    it('respond order cannot be placed. Please select date/time of delivery', (done) => {
+        request(app)
+            .post('/api/v1/orders')
+            .send(dateNotpassed)
+            .expect(400)
+            .end((err) => {
+                if (err) return done(err);
+                done();
+                return true;
+            });
+    });
+});
+
+
+/**
+ * Return welcome
+ */
+
+describe('GET /', () => {
+    it('respond with welcome page', (done) => {
+        request(app)
+            .get('/api/v1/')
+            .expect(200)
             .end((err) => {
                 if (err) return done(err);
                 done();
@@ -69,15 +183,16 @@ describe('POST /orders', () => {
  */
 
 describe('GET /order/:id', () => {
-    // it('respond with order retrieved successfully', (done) => {
-    //     request(app)
-    //         .get('/api/v1/orders/1')
-    //         .expect(200)
-    //         .end((err) => {
-    //             if (err) return done(err);
-    //             done();
-    //         });
-    // });
+    it('respond with order retrieved successfully', (done) => {
+        request(app)
+            .get('/api/v1/orders/1')
+            .expect(200)
+            .end((err) => {
+                if (err) return done(err);
+                done();
+                return true;
+            });
+    });
     it('respond with such order does not exist', (done) => {
         request(app)
             .get('/api/v1/orders/6')
