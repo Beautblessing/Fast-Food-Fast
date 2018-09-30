@@ -26,131 +26,11 @@ describe('POST /orders', () => {
         paymentType: 'Cash/POS',
     };
 
-    const itemNotpassed = {
-        itemAmount: 1500,
-        itemQuantity: 1,
-        nameOfCustomer: 'Bunmi Thomas',
-        email: 'bubu@yahoo.com',
-        phone: '09087654367',
-        address: 'ushafa',
-        orderStatus: 'completed',
-        date: '2018-09-15',
-        paymentType: 'Cash/POS',
-    };
-
-    const customerNotpassed = {
-        foodItemName: 'Beef burger',
-        itemAmount: 1500,
-        itemQuantity: 1,
-        email: 'bubu@yahoo.com',
-        phone: '09087654367',
-        address: 'ushafa',
-        orderStatus: 'completed',
-        date: '2018-09-15',
-        paymentType: 'Cash/POS',
-    };
-
-    const addressNotpassed = {
-        itemAmount: 1500,
-        itemQuantity: 1,
-        nameOfCustomer: 'Bunmi Thomas',
-        email: 'bubu@yahoo.com',
-        phone: '09087654367',
-        address: 'ushafa',
-        orderStatus: 'completed',
-        date: '2018-09-15',
-        paymentType: 'Cash/POS',
-    };
-
-    const paymentMethodNotpassed = {
-        foodItemName: 'Beef burger',
-        itemAmount: 1500,
-        itemQuantity: 1,
-        email: 'bubu@yahoo.com',
-        phone: '09087654367',
-        address: 'ushafa',
-        orderStatus: 'completed',
-        date: '2018-09-15',
-        paymentType: 'Cash/POS',
-    };
-
-    const dateNotpassed = {
-        foodItemName: 'Beef burger',
-        itemAmount: 1500,
-        itemQuantity: 1,
-        email: 'bubu@yahoo.com',
-        phone: '09087654367',
-        address: 'ushafa',
-        orderStatus: 'completed',
-        date: '2018-09-15',
-        paymentType: 'Cash/POS',
-    };
-
     it('respond with 201 created. Your order is being processed', (done) => {
         request(app)
             .post('/api/v1/orders')
             .send(order)
             .expect(201)
-            .end((err) => {
-                if (err) return done(err);
-                done();
-                return true;
-            });
-    });
-
-    it('respond order cannot be placed. Please select a menu item', (done) => {
-        request(app)
-            .post('/api/v1/orders')
-            .send(itemNotpassed)
-            .expect(400)
-            .end((err) => {
-                if (err) return done(err);
-                done();
-                return true;
-            });
-    });
-
-    it('respond order cannot be placed. Please enter your name', (done) => {
-        request(app)
-            .post('/api/v1/orders')
-            .send(customerNotpassed)
-            .expect(400)
-            .end((err) => {
-                if (err) return done(err);
-                done();
-                return true;
-            });
-    });
-
-    it('respond order cannot be placed. Please enter your address', (done) => {
-        request(app)
-            .post('/api/v1/orders')
-            .send(addressNotpassed)
-            .expect(400)
-            .end((err) => {
-                if (err) return done(err);
-                done();
-                return true;
-            });
-    });
-
-    it('respond order cannot be placed. Please select a payment method', (done) => {
-        request(app)
-            .post('/api/v1/orders')
-            .send(paymentMethodNotpassed)
-            .expect(400)
-            .end((err) => {
-                if (err) return done(err);
-                done();
-                return true;
-            });
-    });
-
-    it('respond order cannot be placed. Please select date/time of delivery', (done) => {
-        request(app)
-            .post('/api/v1/orders')
-            .send(dateNotpassed)
-            .expect(400)
             .end((err) => {
                 if (err) return done(err);
                 done();
@@ -217,7 +97,7 @@ describe('PUT /orders/:id', () => {
         phone: '09087654367',
         address: 'ushafa',
         date: '2018-09-15',
-        orderStatus: 'processing',
+        orderStatus: 'declined',
         paymentType: 'Cash/POS',
     };
 
