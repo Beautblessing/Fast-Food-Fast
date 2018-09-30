@@ -17,12 +17,7 @@ app.use(bodyParser.json());
 // Routes which should handle requests
 //  use routes
 
-// app.use('/api/v1/', (req, res) => res.status(200).json({
-//     success: true,
-//     message: 'Wecome to fast-food-fast API',
-// }));
-
-app.use('/api/v1/orders', orderRoutes);
+app.use('/api/v1/', orderRoutes);
 
 app.use((req, res, next) => {
     const error = new Error('Not found');

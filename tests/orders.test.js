@@ -26,18 +26,6 @@ describe('POST /orders', () => {
         paymentType: 'Cash/POS',
     };
 
-    const orderNotpassed = {
-        itemAmount: 1500,
-        itemQuantity: 1,
-        nameOfCustomer: 'Bunmi Thomas',
-        email: 'bubu@yahoo.com',
-        phone: '09087654367',
-        address: 'ushafa',
-        orderStatus: 'completed',
-        date: '2018-09-15',
-        paymentType: 'Cash/POS',
-    };
-
     it('respond with 201 created. Your order is being processed', (done) => {
         request(app)
             .post('/api/v1/orders')
@@ -49,12 +37,18 @@ describe('POST /orders', () => {
                 return true;
             });
     });
+});
 
-    it('respond order cannot be placed. Please check your order', (done) => {
+
+/**
+ * Return welcome
+ */
+
+describe('GET /', () => {
+    it('respond with welcome page', (done) => {
         request(app)
-            .post('/api/v1/orders')
-            .send(orderNotpassed)
-            .expect(400)
+            .get('/api/v1/')
+            .expect(200)
             .end((err) => {
                 if (err) return done(err);
                 done();
@@ -69,15 +63,16 @@ describe('POST /orders', () => {
  */
 
 describe('GET /order/:id', () => {
-    // it('respond with order retrieved successfully', (done) => {
-    //     request(app)
-    //         .get('/api/v1/orders/1')
-    //         .expect(200)
-    //         .end((err) => {
-    //             if (err) return done(err);
-    //             done();
-    //         });
-    // });
+    it('respond with order retrieved successfully', (done) => {
+        request(app)
+            .get('/api/v1/orders/1')
+            .expect(200)
+            .end((err) => {
+                if (err) return done(err);
+                done();
+                return true;
+            });
+    });
     it('respond with such order does not exist', (done) => {
         request(app)
             .get('/api/v1/orders/6')
@@ -102,7 +97,7 @@ describe('PUT /orders/:id', () => {
         phone: '09087654367',
         address: 'ushafa',
         date: '2018-09-15',
-        orderStatus: 'processing',
+        orderStatus: 'declined',
         paymentType: 'Cash/POS',
     };
 
